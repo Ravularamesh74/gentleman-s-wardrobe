@@ -29,7 +29,11 @@ function ProductPage() {
   const { addToCart, toggleWishlist, wishlist } = useShop();
   const [size, setSize] = useState("M");
   const [color, setColor] = useState(p?.colors[0] ?? "");
-  const [img, setImg] = useState(p?.image ?? "");
+
+  const galleryImages = p
+    ? Array.from(new Set([p.image, ...(p.images ?? [])]))
+    : [];
+  const [img, setImg] = useState(galleryImages[0] ?? "");
 
   if (!p) {
     return <div className="container mx-auto px-4 py-20 text-center"><p>Product not found.</p><Link to="/shop" className="text-accent">Back to shop</Link></div>;
@@ -51,7 +55,7 @@ function ProductPage() {
             <img src={img} alt={p.name} className="w-full h-full object-cover" />
           </div>
           <div className="grid grid-cols-4 gap-2 mt-3">
-            {(p.images ?? [p.image]).map((src, i) => (
+            {galleryImages.map((src, i) => (
               <button key={i} onClick={() => setImg(src)} className={`aspect-square rounded overflow-hidden border-2 ${img === src ? "border-accent" : "border-transparent"}`}>
                 <img src={src} alt="" className="w-full h-full object-cover" />
               </button>
