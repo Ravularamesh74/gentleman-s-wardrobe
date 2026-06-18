@@ -57,18 +57,17 @@ function Home() {
       {/* USP strip */}
       <section className="border-b">
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 py-6">
-          {[
+          {([
             [Truck, "Free Shipping", "Above ₹999"],
             [RotateCcw, "Easy Returns", "30-day window"],
             [ShieldCheck, "Secure Payments", "100% protected"],
             [Crown, "Royal Quality", "Premium fabrics"],
-          ].map(([Icon, t, s], i) => (
+          ] as const).map(([Icon, t, s], i) => (
             <div key={i} className="flex items-center gap-3">
-              {/* @ts-expect-error icon */}
               <Icon className="w-5 h-5 text-accent shrink-0" />
               <div>
-                <p className="text-sm font-semibold">{t as string}</p>
-                <p className="text-xs text-muted-foreground">{s as string}</p>
+                <p className="text-sm font-semibold">{t}</p>
+                <p className="text-xs text-muted-foreground">{s}</p>
               </div>
             </div>
           ))}
