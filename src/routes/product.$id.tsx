@@ -117,8 +117,7 @@ function ProductPage() {
           </div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 text-xs">
-            {[[Truck, "Free Shipping"], [RotateCcw, "30-day Returns"], [ShieldCheck, "Secure Payment"]].map(([I, t], i) => (
-              // @ts-expect-error icon
+            {([[Truck, "Free Shipping"], [RotateCcw, "30-day Returns"], [ShieldCheck, "Secure Payment"]] as const).map(([I, t], i) => (
               <div key={i} className="flex items-center gap-2 p-3 bg-secondary/50 rounded"><I className="w-4 h-4 text-accent" /> {t}</div>
             ))}
           </div>
