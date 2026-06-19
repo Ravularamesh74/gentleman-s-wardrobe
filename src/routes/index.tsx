@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Truck, ShieldCheck, RotateCcw, Crown, Instagram } from "lucide-react";
-import hero from "@/assets/hero-1.jpg";
+import hero from "@/assets/image.png";
 import newArrivalsImg from "@/assets/product-1.jpg";
 import bestSellersImg from "@/assets/product-2.jpg";
 import limitedEditionImg from "@/assets/product-3.jpg";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Style Daddy — Premium Menswear" },
       { name: "description", content: "Shop shirts, tees, jeans, jackets, suits, ethnic wear, footwear & accessories for men." },
-      { property: "og:title", content: "Style Daddy — Premium Menswear" },
+      { property: "og:title", content: "Style Daddy" },
       { property: "og:description", content: "Royal aesthetics. Sharp tailoring. Built for the modern king." },
     ],
   }),
