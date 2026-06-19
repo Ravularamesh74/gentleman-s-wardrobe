@@ -20,7 +20,7 @@ export const Route = createFileRoute("/category/$slug")({
   },
 });
 
-function CategoryPage() {
+export function CategoryPage({ type }: { type?: string } = {}) {
   const { slug } = useParams({ from: "/category/$slug" });
   const baseSlug = CATEGORIES.find(c => c.slug === slug)?.slug
     ?? CATEGORIES.find(c => slug.startsWith(c.slug + "-"))?.slug
@@ -29,6 +29,10 @@ function CategoryPage() {
   const products = getByCategory(baseSlug);
   const [sort, setSort] = useState("popular");
   const [open, setOpen] = useState(false);
+
+  const typeName = type
+    ? cat?.children?.find(c => c.slug === type)?.name ?? type.replace(/-/g, " ")
+    : undefined;
 
   const sorted = [...products].sort((a, b) => {
     if (sort === "price-asc") return a.price - b.price;
@@ -44,7 +48,9 @@ function CategoryPage() {
       <div className="bg-secondary/40 border-b">
         <div className="container mx-auto px-4 py-10">
           <p className="text-xs uppercase tracking-widest text-muted-foreground">Men's Collection</p>
-          <h1 className="font-display text-4xl md:text-5xl mt-2 tracking-wide">{cat?.name ?? "Shop"}</h1>
+          <h1 className="font-display text-4xl md:text-5xl mt-2 tracking-wide">
+            {typeName ? `${typeName} ${cat?.name ?? "Shop"}` : cat?.name ?? "Shop"}
+          </h1>
           <p className="text-sm text-muted-foreground mt-2">{products.length} products</p>
         </div>
       </div>
@@ -123,7 +129,7 @@ function CategoryPage() {
   );
 }
 
-function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
+export function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="border-b py-4">
       <h4 className="font-semibold text-sm mb-2">{title}</h4>
