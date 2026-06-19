@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Truck, ShieldCheck, RotateCcw, Crown, Instagram } from "lucide-react";
 import hero from "@/assets/hero-1.jpg";
+import newArrivalsImg from "@/assets/product-1.jpg";
+import bestSellersImg from "@/assets/product-2.jpg";
+import limitedEditionImg from "@/assets/product-3.jpg";
 import { PRODUCTS, CATEGORIES } from "@/lib/catalog";
 import { ProductCard } from "@/components/site/product-card";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,9 +21,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const trending = PRODUCTS.filter(p => p.isNew).slice(0, 8);
-  const bestsellers = PRODUCTS.slice(20, 28);
-  const saleItems = PRODUCTS.filter(p => p.isSale).slice(0, 4);
+  const trending = PRODUCTS.filter(p => p.isNew).slice(0, 8).map((product, index) =>
+    index === 0 ? { ...product, image: newArrivalsImg } : product
+  );
+  const bestsellers = PRODUCTS.slice(20, 28).map((product, index) =>
+    index === 0 ? { ...product, image: bestSellersImg } : product
+  );
+  const saleItems = PRODUCTS.filter(p => p.isSale).slice(0, 4).map((product, index) =>
+    index === 0 ? { ...product, image: limitedEditionImg } : product
+  );
   const featureCats = ["shirts", "t-shirts", "jeans", "jackets", "footwear", "accessories"];
 
   return (
@@ -37,7 +47,7 @@ function Home() {
             </span>
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mt-5 tracking-wide">
               DRESS LIKE<br />
-              <span className="text-gradient-royal bg-gradient-crown bg-clip-text text-transparent">A KING</span>
+              <span className="text-white">A KING</span>
             </h1>
             <p className="mt-6 text-lg text-white/80 max-w-md">
               Premium menswear engineered for men who lead. From boardroom to streetwear, own every room.
@@ -58,7 +68,7 @@ function Home() {
       <section className="border-b">
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 py-6">
           {([
-            [Truck, "Free Shipping", "Above ₹999"],
+            [Truck, "Free Shipping", "Above ₹2999"],
             [RotateCcw, "Easy Returns", "30-day window"],
             [ShieldCheck, "Secure Payments", "100% protected"],
             [Crown, "Royal Quality", "Premium fabrics"],

@@ -118,7 +118,7 @@ export function Header() {
 
           {/* Logo */}
 
-          <Logo size={52} />
+          <Logo size={72} />
 
           {/* Navigation */}
 
@@ -244,12 +244,6 @@ export function Header() {
                     Login
                   </Link>
 
-                  <Link
-                    to="/login"
-                    className="block rounded-lg p-3 hover:bg-zinc-100"
-                  >
-                    Register
-                  </Link>
 
                   <Link
                     to="/account"
@@ -281,61 +275,10 @@ export function Header() {
 
         </div>
 
-        {/* Category Strip */}
-
-        <div className="hidden lg:block border-t bg-zinc-50">
-
-          <div className="container mx-auto h-12 flex items-center justify-center gap-8 text-sm font-medium">
-
-            <Link
-              to="/category/$slug"
-              params={{ slug: "new-arrivals" }}
-              className="hover:text-yellow-600"
-            >
-              ✨ New Arrivals
-            </Link>
-
-            <Link to="/sale" className="text-red-600">
-              🔥 Sale
-            </Link>
-
-            <Link to="/category/$slug" params={{ slug: "oversized" }}>
-              Oversized
-            </Link>
-
-            <Link to="/category/$slug" params={{ slug: "shirts" }}>
-              Shirts
-            </Link>
-
-            <Link to="/category/$slug" params={{ slug: "jeans" }}>
-              Jeans
-            </Link>
-
-            <Link to="/category/$slug" params={{ slug: "cargo" }}>
-              Cargo
-            </Link>
-
-            <Link to="/category/$slug" params={{ slug: "hoodies" }}>
-              Hoodies
-            </Link>
-
-            <Link
-              to="/category/$slug"
-              params={{ slug: "premium" }}
-              className="flex items-center gap-1"
-            >
-
-              <Crown className="w-4 h-4 text-yellow-500" />
-
-              Premium
-
-            </Link>
-
-          </div>
-
-        </div>
-
       </header>
+
+      {/* ========================= */}
+      {/* HERO SECTION */}  
 
       {/* ========================= */}
       {/* SEARCH MODAL */}

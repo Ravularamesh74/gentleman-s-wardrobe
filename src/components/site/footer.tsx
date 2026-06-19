@@ -78,7 +78,7 @@ const SERVICES = [
   {
     icon: Truck,
     title: "Free Express Shipping",
-    desc: "On orders above ₹999",
+    desc: "On orders above ₹2999",
   },
   {
     icon: RotateCcw,
@@ -193,7 +193,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Logo size={70} />
+            <Logo size={106} />
 
             <p className="mt-6 leading-8 text-zinc-400">
               Elevating modern menswear with luxury craftsmanship, timeless
