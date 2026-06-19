@@ -124,62 +124,64 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center ml-10 gap-2">
 
-            {CATEGORIES.slice(0, 8).map((cat) => (
-
-              <div
-                key={cat.slug}
-                className="relative group"
-              >
-                <Link
-                  to="/category/$slug"
-                  params={{ slug: cat.slug }}
-                  className="flex items-center gap-1 px-4 py-7 text-sm font-semibold hover:text-yellow-600 transition"
+            {CATEGORIES.slice(0, 8).map((cat) => {
+              const children = cat.children ?? [];
+              const showDropdown = children.length > 0 && !["shirts", "t-shirts", "jeans"].includes(cat.slug);
+              return (
+                <div
+                  key={cat.slug}
+                  className="relative group"
                 >
-                  {cat.name}
+                  <Link
+                    to="/category/$slug"
+                    params={{ slug: cat.slug }}
+                    className="flex items-center gap-1 px-4 py-7 text-sm font-semibold hover:text-yellow-600 transition"
+                  >
+                    {cat.name}
 
-                  {cat.children && (
-                    <ChevronDown className="w-4 h-4" />
-                  )}
-                </Link>
+                    {showDropdown && (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </Link>
 
-                {cat.children && (
+                  {showDropdown && (
 
-                  <div className="absolute left-0 top-full invisible opacity-0 group-hover:visible group-hover:opacity-100 transition">
+                    <div className="absolute left-0 top-full invisible opacity-0 group-hover:visible group-hover:opacity-100 transition">
 
-                    <div className="w-72 rounded-2xl bg-white shadow-2xl border mt-3 p-5">
+                      <div className="w-72 rounded-2xl bg-white shadow-2xl border mt-3 p-5">
 
-                      <p className="font-bold mb-3">
-                        Shop {cat.name}
-                      </p>
+                        <p className="font-bold mb-3">
+                          Shop {cat.name}
+                        </p>
 
-                      <div className="space-y-2">
+                        <div className="space-y-2">
 
-                        {cat.children.map((item) => (
+                          {children.map((item) => (
 
-                          <Link
-                            key={item.slug}
-                            to="/category/$slug"
-                            params={{
-                              slug: `${cat.slug}-${item.slug}`,
-                            }}
-                            className="block rounded-lg px-3 py-2 hover:bg-zinc-100"
-                          >
-                            {item.name}
-                          </Link>
+                            <Link
+                              key={item.slug}
+                              to="/category/$slug"
+                              params={{
+                                slug: `${cat.slug}-${item.slug}`,
+                              }}
+                              className="block rounded-lg px-3 py-2 hover:bg-zinc-100"
+                            >
+                              {item.name}
+                            </Link>
 
-                        ))}
+                          ))}
+
+                        </div>
 
                       </div>
 
                     </div>
 
-                  </div>
+                  )}
 
-                )}
-
-              </div>
-
-            ))}
+                </div>
+              );
+            })}
 
           </nav>
 
@@ -371,7 +373,7 @@ export function Header() {
 
             <div className="p-5 space-y-1">
 
-              {CATEGORIES.map((cat) => (
+              {CATEGORIES.filter((cat) => cat.slug !== "shirts" && cat.slug !== "t-shirts").map((cat) => (
 
                 <Link
                   key={cat.slug}
