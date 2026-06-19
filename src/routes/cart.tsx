@@ -42,7 +42,7 @@ function CartPage() {
               <img src={item.product.image} alt={item.product.name} className="w-24 h-32 object-cover rounded" />
               <div className="flex-1 min-w-0">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.product.brand}</p>
-                <Link to="/product/$id" params={{ id: item.product.id }} className="font-medium hover:text-accent">{item.product.name}</Link>
+                <Link to={"/product/$id" as any} params={{ id: item.product.id }} className="font-medium hover:text-accent">{item.product.name}</Link>
                 <p className="text-xs text-muted-foreground mt-1">Size: {item.size} · Color: {item.color}</p>
                 <p className="font-semibold mt-2">₹{(item.product.price * item.qty).toLocaleString()}</p>
               </div>

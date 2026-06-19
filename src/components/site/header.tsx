@@ -133,8 +133,8 @@ export function Header() {
                   className="relative group"
                 >
                   <Link
-                    to="/category/$slug"
-                    params={{ slug: cat.slug }}
+                    to={"/category/$slug" as any}
+                    params={{ slug: cat.slug } as any}
                     className="flex items-center gap-1 px-4 py-7 text-sm font-semibold hover:text-yellow-600 transition"
                   >
                     {cat.name}
@@ -160,10 +160,10 @@ export function Header() {
 
                             <Link
                               key={item.slug}
-                              to="/category/$slug"
+                              to={"/category/$slug" as any}
                               params={{
                                 slug: `${cat.slug}-${item.slug}`,
-                              }}
+                              } as any}
                               className="block rounded-lg px-3 py-2 hover:bg-zinc-100"
                             >
                               {item.name}

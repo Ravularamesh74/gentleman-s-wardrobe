@@ -34,10 +34,10 @@ export function ProductCard({ product }: ProductCardProps) {
     <div className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white transition-all duration-500 hover:-translate-y-2 hover:border-yellow-400/60 hover:shadow-2xl">
       {/* IMAGE */}
       <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100">
-        <Link
-          to="/product/$id"
-          params={{ id: product.id }}
-        >
+          <Link
+            to={"/product/$id" as any}
+            params={{ id: product.id }}
+          >
           <img
             src={product.image}
             alt={product.name}
@@ -121,10 +121,10 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Name */}
-        <Link
-          to="/product/$id"
-          params={{ id: product.id }}
-        >
+          <Link
+            to={"/product/$id" as any}
+            params={{ id: product.id }}
+          >
           <h3 className="line-clamp-2 text-lg font-bold transition group-hover:text-yellow-600">
             {product.name}
           </h3>

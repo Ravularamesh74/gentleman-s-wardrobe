@@ -96,8 +96,8 @@ export function ShopByOccasion() {
             return (
               <Link
                 key={item.title}
-                to="/category/$slug"
-                params={{ slug: item.slug }}
+                to={"/category/$slug" as any}
+                params={{ slug: item.slug } as any}
                 className="group relative overflow-hidden rounded-[32px] shadow-xl"
               >
                 {/* Background */}

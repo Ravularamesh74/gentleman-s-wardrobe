@@ -217,10 +217,10 @@ export function StyleQuiz() {
 
               <div className="mt-12 flex flex-wrap justify-center gap-4">
                 <Link
-                  to="/category/$slug"
+                  to={"/category/$slug" as any}
                   params={{
                     slug: result?.category ?? "t-shirts",
-                  }}
+                  } as any}
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 px-8 py-4 font-bold text-black transition hover:scale-105"
                 >
                   Shop My Style

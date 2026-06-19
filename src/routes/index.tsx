@@ -92,7 +92,7 @@ function Home() {
             const cat = CATEGORIES.find(c => c.slug === slug)!;
             const prod = PRODUCTS.find(p => p.category === slug);
             return (
-              <Link key={slug} to="/category/$slug" params={{ slug }} className="group block">
+              <Link key={slug} to={"/category/$slug" as any} params={{ slug } as any} className="group block">
                 <div className="aspect-square overflow-hidden rounded-xl bg-muted">
                   <img src={prod?.image} alt={cat.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
