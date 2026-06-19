@@ -160,10 +160,11 @@ export function Header() {
 
                             <Link
                               key={item.slug}
-                              to={"/category/$slug" as any}
+                              to="/category/$slug/$type"
                               params={{
-                                slug: `${cat.slug}-${item.slug}`,
-                              } as any}
+                                slug: cat.slug,
+                                type: item.slug,
+                              }}
                               className="block rounded-lg px-3 py-2 hover:bg-zinc-100"
                             >
                               {item.name}
